@@ -8,6 +8,11 @@ public class Questions {
         start++;
         end--;
     }
+    public static void swap(int[] arr, int idx1, int idx2) {
+        int temp = arr[idx1];
+        arr[idx1] = arr[idx2];
+        arr[idx2] = temp;
+    }
 
     public static void printArray(int[] arr) {
         for(int i = 0; i < arr.length; i++) {
@@ -96,6 +101,58 @@ public class Questions {
         }
         return result;
     }
+    public static int searchInRotatedSorted(int[] arr, int key) {
+        int start = 0, end = arr.length-1;
+        while(start <= end) {
+            int mid = start+(end-start)/2;
+            if(arr[mid] == key) {
+                return mid;
+            }
+            if(arr[start] <= arr[mid]) {    //left is Sorted
+                if(arr[start] <= key && arr[mid] >= key) {
+                    end = mid-1;
+                } 
+                else {
+                    start = mid+1;
+                }
+            }
+            else {
+                if(arr[mid] <= key && arr[end] >= key) {
+                    start = mid+1;
+                }
+                else {
+                    end = mid-1;
+                }
+            }
+        }
+        return -1;
+    }
+    //Find the next permutation
+    public static void nextPermutation(int[] arr) {
+        int idx = -1;
+        int n = arr.length;
+        
+        for(int i = n-2; i >= 0; i--) {
+            if(arr[i] < arr[i+1]) {
+                idx = i;
+                break;  //BREAK STATEMENT IS VERY IMPORTANT
+            }
+        }
+        if(idx == -1) {
+            reverse(arr, 0, n-1);
+            return;
+        }
+        for(int i = n-1; i >= 0; i--) {
+            if(arr[idx] < arr[i]) {
+                //swap
+                swap(arr, idx, i);
+                break;  //BREAK STATEMENT IS VERY IMPORTANT
+            }
+        }
+        reverse(arr, idx+1, n-1);
+        
+    }
+    
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5};
         //int k = 2;
@@ -111,18 +168,25 @@ public class Questions {
 
         //printDuplicate(arr);
 
-        ArrayList<Integer> arr1 = new ArrayList<>();
-        int k = 5;
-        arr1.add(3);
-        arr1.add(4);
-        arr1.add(1);
-        arr1.add(9);
-        arr1.add(56);
-        arr1.add(7);
-        arr1.add(9);
-        arr1.add(12);
+        // ArrayList<Integer> arr1 = new ArrayList<>();
+        // int k = 5;
+        // arr1.add(3);
+        // arr1.add(4);
+        // arr1.add(1);
+        // arr1.add(9);
+        // arr1.add(56);
+        // arr1.add(7);
+        // arr1.add(9);
+        // arr1.add(12);
 
-        System.out.println(findMinDiff(arr1, k));
+        //System.out.println(findMinDiff(arr1, k));
+
+        //6.
+        //System.out.println(searchInRotatedSorted(arr, 4));
+
+        //7. Next Permutation
+        nextPermutation(arr);
+        printArray(arr);
 
     }
 }
