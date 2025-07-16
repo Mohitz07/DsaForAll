@@ -1,4 +1,4 @@
-package Array;
+package Dump;
 import java.util.*;
 public class Questions {
     private static void reverse(int[] arr, int start, int end) {    //TC = O(n) | SC = O(1)
