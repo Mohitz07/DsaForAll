@@ -1,5 +1,4 @@
 package DSA_Que.LinkedListNotExist;
-import java.util.*;
 class Node{
     int data;
     Node next;

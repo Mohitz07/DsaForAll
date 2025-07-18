@@ -102,6 +102,13 @@ public class Square {
             System.out.println();
         }
     }
+/*
+1 2 3 4 5 
+2 3 4 5 6
+3 4 5 6 7
+4 5 6 7 8
+5 6 7 8 9
+ */
     public static void increasingNumberSquare3() {
         int n = 5; 
         for(int i = 0; i < n; i++) {
@@ -121,6 +128,6 @@ public class Square {
         //increasingNumberSquare1();
         //increasingNumberSquare2();
         increasingNumberSquare3();
-        
+
     }
 }
