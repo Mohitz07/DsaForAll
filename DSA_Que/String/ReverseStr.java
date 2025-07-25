@@ -1,5 +1,4 @@
 package DSA_Que.String;
-import java.util.*;
 public class ReverseStr {
     public static String reverseString(String str) {
         StringBuilder sb = new StringBuilder(str);
@@ -14,6 +13,7 @@ public class ReverseStr {
             sb.setCharAt(front, backChar);
             sb.setCharAt(back, frontChar);
         }
+        
         return sb.toString();
     }
     public static void main(String[] args) {
